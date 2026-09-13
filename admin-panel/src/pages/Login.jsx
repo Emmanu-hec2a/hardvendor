@@ -40,7 +40,7 @@ const Login = () => {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-ink rounded-2xl mb-4 shadow-lg shadow-teal-ink/20">
             <span className="text-3xl font-bold text-white italic">T</span>
           </div>
-          <h1 className="text-2xl font-bold text-neutral-900 tracking-tight">TinahStore Admin</h1>
+          <h1 className="text-2xl font-bold text-neutral-900 tracking-tight">HardVendor Admin</h1>
           <p className="text-neutral-500 mt-2">Enter your credentials to access the store</p>
         </div>
 
@@ -91,7 +91,7 @@ const Login = () => {
         </div>
 
         <p className="text-center text-xs text-neutral-400 mt-8">
-          &copy; 2026 TinahStore Ltd. All rights reserved.
+          &copy; 2026 HardVendor Ltd. All rights reserved.
         </p>
       </div>
     </div>

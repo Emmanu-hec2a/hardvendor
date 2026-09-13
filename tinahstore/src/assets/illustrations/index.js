@@ -1,11 +1,18 @@
-import ToteIllustration from './ToteIllustration.jsx';
-import CrossbodyIllustration from './CrossbodyIllustration.jsx';
-import BackpackIllustration from './BackpackIllustration.jsx';
-import ClutchIllustration from './ClutchIllustration.jsx';
+import WhiskeyIllustration from './WhiskeyIllustration.jsx';
+import GinIllustration from './GinIllustration.jsx';
+import VodkaIllustration from './VodkaIllustration.jsx';
+import WineIllustration from './WineIllustration.jsx';
+
+export {
+  WhiskeyIllustration,
+  GinIllustration,
+  VodkaIllustration,
+  WineIllustration,
+};
 
 export const illustrationMap = {
-  tote: ToteIllustration,
-  crossbody: CrossbodyIllustration,
-  backpack: BackpackIllustration,
-  clutch: ClutchIllustration,
+  whiskey: WhiskeyIllustration,
+  gin: GinIllustration,
+  vodka: VodkaIllustration,
+  wine: WineIllustration,
 };

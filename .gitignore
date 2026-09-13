@@ -2,5 +2,5 @@
 /admin-panel/node_modules
 
 /backend/.env
-/tinahstore/node_modules
-/tinahstore/.env
+/hardvendor/node_modules
+/hardvendor/.env

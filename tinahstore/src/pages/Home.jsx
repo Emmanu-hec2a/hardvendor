@@ -3,25 +3,21 @@ import { Link, useLocation } from 'react-router-dom';
 import Icon from '../components/icons/Icon.jsx';
 import SEO from '../components/common/SEO.jsx';
 import ProductCard from '../components/product/ProductCard.jsx';
-import ToteIllustration from '../assets/illustrations/ToteIllustration.jsx';
-import CrossbodyIllustration from '../assets/illustrations/CrossbodyIllustration.jsx';
-import BackpackIllustration from '../assets/illustrations/BackpackIllustration.jsx';
-import ClutchIllustration from '../assets/illustrations/ClutchIllustration.jsx';
+import { WhiskeyIllustration, GinIllustration, VodkaIllustration, WineIllustration } from '../assets/illustrations/index.js';
 import { useProducts } from '../hooks/useProducts.js';
 
 const categories = [
-  ['Totes', 'Structured everyday carry', ToteIllustration],
-  ['Crossbody', 'Hands-free, city-ready', CrossbodyIllustration],
-  ['Backpacks', 'For longer days, light loads', BackpackIllustration],
-  ['Clutches', 'Evenings, weddings, travel', ClutchIllustration],
+  ['Whiskey', 'Single malts & blends', WhiskeyIllustration],
+  ['Gin', 'Botanical & refreshing', GinIllustration],
+  ['Vodka', 'Premium & smooth', VodkaIllustration],
+  ['Wine', 'Red, white & sparkling', WineIllustration],
 ];
 
 const contactLinks = [
-  { label: 'Gmail', value: 'petniqueke@gmail.com', href: 'mailto:petniqueke@gmail.com', icon: 'mail' },
-  { label: 'Phone', value: '+254 726 911 763', href: 'tel:+254726911763', icon: 'phone' },
-  { label: 'WhatsApp', value: 'Chat with us', href: 'https://wa.me/254726911763', icon: 'whatsapp' },
-  { label: 'TikTok', value: '@hotfits28', href: 'https://www.tiktok.com/@hotfits28', icon: 'tiktok' },
-//   { label: 'X', value: '@tinahstore', href: 'https://x.com/tinahstore', icon: 'xSocial' },
+  { label: 'Gmail', value: 'orders@hardvendor.co.ke', href: 'mailto:orders@hardvendor.co.ke', icon: 'mail' },
+  { label: 'Phone', value: '+254 726 911 763', href: 'tel:+254717272726', icon: 'phone' },
+  { label: 'WhatsApp', value: 'Order on WhatsApp', href: 'https://wa.me/254717272726', icon: 'whatsapp' },
+  { label: 'TikTok', value: '@hardvendor', href: 'https://www.tiktok.com/@hardvendor', icon: 'tiktok' },
 ];
 
 export default function Home() {
@@ -40,11 +36,11 @@ export default function Home() {
   const homeSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "TinahStore",
-    "url": "https://tinahstore.store",
+    "name": "HardVendor",
+    "url": "https://hardvendor.store",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://tinahstore.store/shop?search={search_term_string}",
+      "target": "https://hardvendor.store/shop?search={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   };
@@ -52,9 +48,9 @@ export default function Home() {
   const orgSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "TinahStore",
-    "url": "https://tinahstore.store",
-    "logo": "https://tinahstore.store/favicon.png",
+    "name": "HardVendor",
+    "url": "https://hardvendor.store",
+    "logo": "https://hardvendor.store/favicon.png",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+254-726-911-763",
@@ -63,7 +59,7 @@ export default function Home() {
       "availableLanguage": "en"
     },
     "sameAs": [
-      "https://www.tiktok.com/@hotfits28"
+      "https://www.tiktok.com/@hardvendor"
     ]
   };
 
@@ -75,20 +71,20 @@ export default function Home() {
       <section className="hero">
         <div className="container">
           <div className="hero-copy">
-            <p className="eyebrow">New arrivals - AW26</p>
-            <h1 className="h1">Bags that carry more than your things.</h1>
-            <p className="lede">Hand-finished leather and canvas pieces, designed in Nairobi for everyday movement - from the office to the airport to everywhere between.</p>
+            <p className="eyebrow">Karatina University's Fastest Delivery</p>
+            <h1 className="h1">Premium liquor, delivered in 15 mins.</h1>
+            <p className="lede">Your favorite spirits, chilled and ready to pour. Delivered to your doorstep within Karatina University Main Campus faster than you can find a glass.</p>
             <div className="hero-actions">
-              <Link to="/shop" className="btn btn-primary">Shop the collection</Link>
-              <a href="#about" className="btn btn-outline">Our craft</a>
+              <Link to="/shop" className="btn btn-primary">Browse Collection</Link>
+              <a href="#about" className="btn btn-outline">Our Promise</a>
             </div>
           </div>
           <div className="hero-art">
             <div className="ring"></div>
-            <ToteIllustration color="#0D3B36" detailed />
+            <WhiskeyIllustration color="#0D3B36" detailed />
             <div className="hero-tag">
-              <div className="tline">Hangtag</div>
-              <div>Tinah's Store - Teal</div>
+              <div className="tline">15 Mins</div>
+              <div>Doorstep Delivery</div>
             </div>
           </div>
         </div>
@@ -97,10 +93,10 @@ export default function Home() {
       <div className="trust-strip">
         <div className="container trust-grid">
           {[
-            ['truck', 'Nairobi delivery', '8AM - 6PM'],
-            ['shield', 'Pay safely', 'M-PESA'],
-            ['leaf', 'Full-grain leather', 'Ethically sourced'],
-            ['refresh', 'Easy exchanges', '0-day window'],
+            ['clock', '15-min delivery', 'Karatina University'],
+            ['shield', 'Original Brands', '100% Authentic'],
+            ['ice', 'Chilled Delivery', 'Ready to serve'],
+            ['refresh', 'Easy Re-orders', 'WhatsApp support'],
           ].map(([icon, title, copy]) => (
             <div className="trust-item" key={title}><Icon name={icon} className="icon icon-lg" /><div><strong>{title}</strong><span>{copy}</span></div></div>
           ))}
@@ -109,7 +105,7 @@ export default function Home() {
 
       <section>
         <div className="container">
-          <div className="section-head"><div><p className="eyebrow">Browse</p><h2 className="h2">Shop by category</h2></div></div>
+          <div className="section-head"><div><p className="eyebrow">Explore</p><h2 className="h2">Shop by Category</h2></div></div>
           <div className="cat-grid">
             {categories.map(([name, copy, Art]) => (
               <Link to={`/shop?category=${name.toLowerCase()}`} className="cat-card" key={name}>
@@ -125,7 +121,7 @@ export default function Home() {
       <section style={{ background: 'var(--surface)', borderTop: '1px solid var(--hairline)', borderBottom: '1px solid var(--hairline)' }}>
         <div className="container">
           <div className="section-head">
-            <div><p className="eyebrow">Most carried</p><h2 className="h2">Best sellers</h2></div>
+            <div><p className="eyebrow">Trending Now</p><h2 className="h2">Top Shelf Favorites</h2></div>
             <Link to="/shop" className="view-all">View all <Icon name="arrowRight" className="icon icon-sm" /></Link>
           </div>
           <div className="product-grid">
@@ -142,25 +138,25 @@ export default function Home() {
         <div className="container">
           <div className="story about-story">
             <div>
-              <p className="eyebrow">About TinahStore</p>
-              <h2 className="h2" style={{ marginBottom: 20 }}>Made in small batches, not a factory line.</h2>
-              <p className="lede" style={{ marginBottom: 20 }}>Every TinahStore piece starts at a workbench in Nairobi. We work with a small team of leather artisans to cut, stitch, and finish each bag by hand - so the things you carry every day are built to actually last.</p>
+              <p className="eyebrow">About HardVendor</p>
+              <h2 className="h2" style={{ marginBottom: 20 }}>More than a store. It's a service.</h2>
+              <p className="lede" style={{ marginBottom: 20 }}>HardVendor was founded on a simple idea: you shouldn't have to wait for a great drink. We've optimized our logistics to ensure that your favorite premium liquor reaches you in under 15 minutes within Karatina University Main Campus, chilled and ready to enjoy.</p>
               <div className="about-points">
-                <div><strong>Designed in Nairobi</strong><span>Clean silhouettes for office days, travel days, and everything between.</span></div>
-                <div><strong>Built to be repaired</strong><span>Hardware, straps, and seams are chosen so your bag can stay in rotation.</span></div>
-                <div><strong>Checkout made local</strong><span>M-PESA first, card friendly, with delivery support across Kenya.</span></div>
+                <div><strong>Campus Wide</strong><span>Reaching you anywhere within Karatina University Main Campus, fast.</span></div>
+                <div><strong>Curated Selection</strong><span>We only stock the finest spirits, ensuring every bottle is top-shelf quality.</span></div>
+                <div><strong>Seamless Checkout</strong><span>Pay instantly with M-PESA for a frictionless experience.</span></div>
               </div>
               <div className="hero-actions">
-                <Link to="/shop" className="btn btn-primary">Shop bags</Link>
-                <a href="#contact" className="btn btn-outline">Contact us</a>
+                <Link to="/shop" className="btn btn-primary">Shop Spirits</Link>
+                <a href="#contact" className="btn btn-outline">Get in touch</a>
               </div>
             </div>
             <div className="art about-panel">
-              <ToteIllustration color="#0D3B36" detailed />
+              <WhiskeyIllustration color="#0D3B36" detailed />
               <div className="about-stats">
-                <div><strong>8AM - 6PM</strong><span>Nairobi delivery</span></div>
-                <div><strong>0 days</strong><span>Exchange window</span></div>
-                <div><strong>Small batch</strong><span>Limited drops</span></div>
+                <div><strong>15 Mins</strong><span>Delivery Time</span></div>
+                <div><strong>24/7</strong><span>Support Available</span></div>
+                <div><strong>Premium</strong><span>Brands Only</span></div>
               </div>
             </div>
           </div>
@@ -169,9 +165,9 @@ export default function Home() {
 
       <section style={{ background: 'var(--surface)', borderTop: '1px solid var(--hairline)', borderBottom: '1px solid var(--hairline)' }}>
         <div className="container">
-          <div className="section-head"><div><p className="eyebrow">From the community</p><h2 className="h2">What customers say</h2></div></div>
+          <div className="section-head"><div><p className="eyebrow">The Experience</p><h2 className="h2">What our customers say</h2></div></div>
           <div className="testi-grid">
-            {['Three years in and the strap has not budged. This tote has been to more meetings than I have.', 'Paid with M-PESA, had it in two days. The leather smell alone is worth it.', 'My go-to gift for every friend starting a new job.'].map((quote, index) => (
+            {['Arrived in exactly 12 minutes at Kagochi. The bottle was perfectly chilled. Best service on campus!', 'Found a rare bottle of whiskey here that I couldn\'t find anywhere else. Delivery was incredibly fast.', 'Hosting a room party and ran out of gin. HardVendor saved the night in less than 15 minutes.'].map((quote, index) => (
               <div className="testi-card" key={quote}>
                 <div className="rating">
                   <div className="stars">
@@ -179,7 +175,7 @@ export default function Home() {
                   </div>
                 </div>
                 <p>"{quote}"</p>
-                <footer>{['Wanjiru K. - Nairobi', 'Brian O. - Mombasa', 'Achieng M. - Kisumu'][index]}</footer>
+                <footer>{['Kamau W. - Kagochi', 'Sarah M. - Main Campus', 'David O. - Hostels'][index]}</footer>
               </div>
             ))}
           </div>
@@ -191,8 +187,8 @@ export default function Home() {
           <div className="contact-layout">
             <div>
               <p className="eyebrow">Contact</p>
-              <h2 className="h2">Need help choosing, gifting, or ordering?</h2>
-              <p className="lede">Message TinahStore for product questions, delivery updates, custom requests, or help completing checkout.</p>
+              <h2 className="h2">Need a recommendation or help with an order?</h2>
+              <p className="lede">Reach out to our team for spirits advice, large order support, or delivery updates.</p>
             </div>
             <div className="contact-grid">
               {contactLinks.map((item) => (
@@ -220,12 +216,12 @@ function Newsletter() {
     <section className="newsletter">
       <div className="container">
         <p className="eyebrow">Stay close</p>
-        <h2 className="h2">Get first access to new drops</h2>
+        <h2 className="h2">Access to Rare Drops & Events</h2>
         <form className="newsletter-form" onSubmit={(event) => { event.preventDefault(); setSubmitted(true); }}>
           {!submitted && <div className="newsletter-row"><input type="email" placeholder="you@email.com" required /><button className="btn btn-primary" type="submit">Subscribe</button></div>}
         </form>
-        <div className={`newsletter-success ${submitted ? 'show' : ''}`}><Icon name="checkCircle" /> You're on the list - welcome.</div>
-        <p className="newsletter-fine">No spam, just new bags and the occasional discount code.</p>
+        <div className={`newsletter-success ${submitted ? 'show' : ''}`}><Icon name="checkCircle" /> You're on the list for rare drops.</div>
+        <p className="newsletter-fine">No spam, just exclusive access to the finest bottles.</p>
       </div>
     </section>
   );

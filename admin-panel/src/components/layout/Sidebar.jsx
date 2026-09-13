@@ -40,8 +40,8 @@ const Sidebar = ({ isOpen, onClose }) => {
 
       <aside className={`fixed top-0 left-0 bottom-0 w-[240px] bg-teal-ink text-white/70 z-50 transition-transform duration-300 transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 flex flex-col`}>
         <div className="h-[78px] flex items-center px-6 gap-3">
-          <div className="w-8 h-8 bg-cyan-500 rounded-lg flex items-center justify-center text-white font-bold italic">T</div>
-          <span className="text-lg font-bold text-white tracking-tight">Tinah<span className="text-cyan-400">Store</span> Admin</span>
+          <div className="w-8 h-8 bg-cyan-500 rounded-lg flex items-center justify-center text-white font-bold italic">H</div>
+          <span className="text-lg font-bold text-white tracking-tight">Hard<span className="text-cyan-400">Vendor</span> Admin</span>
         </div>
 
         <nav className="flex-1 px-3 py-4 space-y-1">

@@ -1,7 +1,7 @@
 export default function AnnounceBar() {
   return (
     <div className="announce-bar">
-      Free delivery in Nairobi on orders over <strong>KSh 2,000</strong> - Pay easily with M-PESA
+      Premium liquor delivered in <strong>15 mins</strong> within Karatina University Main Campus. Free delivery on orders over <strong>KSh 2,500</strong>.
     </div>
   );
 }

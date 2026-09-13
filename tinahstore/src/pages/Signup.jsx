@@ -58,9 +58,9 @@ export default function Signup() {
         </nav>
         <div className="page-head">
           <div>
-            <p className="eyebrow">Join TinahStore</p>
+            <p className="eyebrow">Join HardVendor</p>
             <h2 className="h2">Create your account</h2>
-            <span className="muted" style={{ fontSize: 13.5 }}>Join our community of leather craft lovers.</span>
+            <span className="muted" style={{ fontSize: 13.5 }}>Join Karatina University's fastest liquor delivery service.</span>
           </div>
         </div>
       </div>
@@ -103,9 +103,9 @@ export default function Signup() {
           <div className="account-card account-benefits">
             <h3>Why create an account?</h3>
             {[
-              ['truck', 'Faster shipping', 'We store your preferred delivery address.'],
+              ['clock', '15-min delivery', 'We store your preferred delivery address for speed.'],
               ['creditCard', 'Order history', 'Access your digital receipts anytime.'],
-              ['star', 'Exclusive drops', 'Get notified about limited leather batches.'],
+              ['star', 'Rare Drops', 'Get notified about limited edition bottles and events.'],
             ].map(([icon, title, copy]) => (
               <div className="account-benefit" key={title}>
                 <span className="contact-icon"><Icon name={icon} /></span>

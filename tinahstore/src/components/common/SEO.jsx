@@ -9,13 +9,13 @@ export default function SEO({
   type = 'website',
   schemaData
 }) {
-  const siteName = 'TinahStore';
-  const defaultDescription = 'Hand-finished leather and canvas pieces, designed in Nairobi for everyday movement. Shop high-quality totes, backpacks, and crossbody bags.';
-  const defaultKeywords = 'leather bags Nairobi, canvas bags, handmade bags Kenya, TinahStore, luxury totes, artisan bags';
-  const defaultImage = 'https://tinahstore.store/og-image.png'; // Make sure to provide a default OG image
-  const siteUrl = 'https://tinahstore.store';
+  const siteName = 'HardVendor';
+  const defaultDescription = 'Premium liquor delivered to your doorstep within Karatina University Main Campus in under 15 minutes. Shop high-quality whiskey, gin, vodka, and wine.';
+  const defaultKeywords = 'liquor delivery Karatina University, alcohol delivery Kagochi, HardVendor, premium spirits, 15 min delivery, whiskey delivery, gin delivery';
+  const defaultImage = 'https://hardvendor.store/og-image.png'; // Make sure to provide a default OG image
+  const siteUrl = 'https://hardvendor.store';
 
-  const fullTitle = title ? `${title} | ${siteName}` : `TinahStore | Bags that carry more than your things`;
+  const fullTitle = title ? `${title} | ${siteName}` : `HardVendor | Premium Liquor Delivered in 15 Mins`;
   const metaDescription = description || defaultDescription;
   const metaKeywords = keywords || defaultKeywords;
   const metaImage = image || defaultImage;

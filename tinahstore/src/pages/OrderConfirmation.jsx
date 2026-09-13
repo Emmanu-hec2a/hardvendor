@@ -6,13 +6,29 @@ import ProductArt from '../components/product/ProductArt.jsx';
 import { formatKes } from '../data/products.js';
 import { api } from '../services/api.js';
 
-const supportEmail = 'petniqueke@gmail.com';
-const supportPhone = '254726911763';
+const supportEmail = 'orders@hardvendor.co.ke';
+const supportPhone = '254717272726';
 
 export default function OrderConfirmation() {
   const location = useLocation();
   const [order, setOrder] = useState(location.state?.order);
   const [paymentStatus, setPaymentStatus] = useState('pending_verification');
+  const [timeLeft, setTimeLeft] = useState(900); // 15 minutes in seconds
+
+  useEffect(() => {
+    if (order) {
+      const timer = setInterval(() => {
+        setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
+      }, 1000);
+      return () => clearInterval(timer);
+    }
+  }, [order]);
+
+  const formatTime = (seconds) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  };
 
   // Polling removed for manual flow
   useEffect(() => {
@@ -45,17 +61,17 @@ export default function OrderConfirmation() {
     );
   }
 
-  const encodedTrackingMessage = encodeURIComponent(`Hi TinahStore, I would like to track order ${order.order_number}.`);
-  const receiptSubject = encodeURIComponent(`TinahStore order ${order.order_number}`);
+  const encodedTrackingMessage = encodeURIComponent(`Hi HardVendor, I would like to track order ${order.order_number}.`);
+  const receiptSubject = encodeURIComponent(`HardVendor order ${order.order_number}`);
   const receiptBody = encodeURIComponent(
-    `Hello TinahStore,\n\nPlease help me with order ${order.order_number}.\nTotal: ${formatKes(order.total_amount)}\n`
+    `Hello HardVendor,\n\nPlease help me with order ${order.order_number}.\nTotal: ${formatKes(order.total_amount)}\n`
   );
 
   return (
     <>
       <header className="checkout-header">
         <div className="container">
-          <Link to="/" className="logo">Tinah<span>Store</span></Link>
+          <Link to="/" className="logo">Hard<span>Vendor</span></Link>
           <div className="secure-pill">
             <Icon name="lock" className="icon icon-sm" />
             {paymentStatus === 'paid' ? 'Order confirmed' : 'Verification in progress'}
@@ -65,7 +81,7 @@ export default function OrderConfirmation() {
 
       <main className="container">
         <div className="steps">
-          <div className="step done"><span className="num"><Icon name="check" className="icon icon-sm" /></span> Bag</div>
+          <div className="step done"><span className="num"><Icon name="check" className="icon icon-sm" /></span> Order</div>
           <div className="step-line"></div>
           <div className="step done"><span className="num"><Icon name="check" className="icon icon-sm" /></span> Checkout</div>
           <div className="step-line"></div>
@@ -76,6 +92,26 @@ export default function OrderConfirmation() {
 
         <div className="confirm-layout">
           <section className="confirm-hero" aria-labelledby="confirmation-title">
+            {timeLeft > 0 && (
+              <div className="delivery-timer-card" style={{
+                background: 'var(--oxblood)',
+                color: 'white',
+                padding: '24px',
+                borderRadius: '16px',
+                marginBottom: '32px',
+                display: 'inline-block',
+                minWidth: '280px',
+                boxShadow: '0 12px 24px rgba(0,0,0,0.1)'
+              }}>
+                <p className="eyebrow" style={{ color: 'rgba(255,255,255,0.8)', justifyContent: 'center' }}>Estimated Delivery Time</p>
+                <div style={{ fontSize: '48px', fontWeight: 'bold', fontFamily: 'monospace', margin: '8px 0' }}>
+                  {formatTime(timeLeft)}
+                </div>
+                <p style={{ fontSize: '12px', margin: 0, opacity: 0.9 }}>
+                  Our rider is preparing your chilled spirits.
+                </p>
+              </div>
+            )}
             <div className={`confirm-icon ${paymentStatus === 'paid' ? 'success' : 'pending'}`}>
               <Icon name={paymentStatus === 'paid' ? 'checkCircle' : 'clock'} />
             </div>
@@ -85,7 +121,7 @@ export default function OrderConfirmation() {
             </h1>
             <p className="lede" style={{ margin: '14px auto 0', maxWidth: 600 }}>
               {paymentStatus === 'paid'
-                ? "Your order is confirmed and being prepared at our Nairobi workshop. We'll message you once it's out for delivery."
+                ? "Your order is confirmed and being prepared at our Karatina hub. We'll message you once it's out for delivery."
                 : `We've received your order and the Transaction Code (${order.transaction_code || location.state?.transactionCode || 'N/A'}). Our team is manually verifying the deposit. You'll receive a confirmation message shortly.`}
             </p>
 
@@ -97,7 +133,7 @@ export default function OrderConfirmation() {
             ) : (
               <div className="confirm-actions">
                 <a
-                  href={`https://wa.me/${supportPhone}?text=${encodeURIComponent(`Hi TinahStore, I've just placed order ${order.order_number} and paid the deposit. Transaction code: ${order.transaction_code || ''}`)}`}
+                  href={`https://wa.me/${supportPhone}?text=${encodeURIComponent(`Hi HardVendor, I've just placed order ${order.order_number} and paid the deposit. Transaction code: ${order.transaction_code || ''}`)}`}
                   className="btn btn-primary"
                   target="_blank"
                   rel="noreferrer"

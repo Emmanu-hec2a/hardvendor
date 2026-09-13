@@ -115,7 +115,7 @@ export default function Account() {
                 <Icon name="bag" />
                 <h4>No orders yet</h4>
                 <p className="muted" style={{ marginBottom: 24, fontSize: 14 }}>
-                  When you shop, your orders will appear here.
+                  When you order, your history will appear here.
                 </p>
                 <Link to="/shop" className="btn btn-primary btn-sm">Start shopping</Link>
               </div>
@@ -149,7 +149,7 @@ export default function Account() {
         <div className="page-head">
           <div>
             <p className="eyebrow">Customer account</p>
-            <h2 className="h2">Sign in to TinahStore</h2>
+            <h2 className="h2">Sign in to HardVendor</h2>
             <span className="muted" style={{ fontSize: 13.5 }}>Track orders, save addresses, and manage your wishlist.</span>
           </div>
         </div>

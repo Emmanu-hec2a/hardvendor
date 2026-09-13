@@ -38,7 +38,7 @@ class TelegramService:
         items_list = "\n".join([f"- {item.quantity}x {item.product.name}" for item in order.items.all()])
         
         message = (
-            f"🛍 <b>New Order Received!</b>\n\n"
+            f"🍾 <b>HardVendor: New Order Received!</b>\n\n"
             f"<b>Order Number:</b> <code>{order.order_number}</code>\n"
             f"<b>Customer:</b> {order.customer_name}\n"
             f"<b>Phone:</b> {order.customer_phone}\n"
@@ -54,7 +54,7 @@ class TelegramService:
         Formats and sends a notification when a deposit is paid.
         """
         message = (
-            f"✅ <b>Deposit Paid!</b>\n\n"
+            f"🥃 <b>HardVendor: Deposit Paid!</b>\n\n"
             f"<b>Order:</b> <code>{order.order_number}</code>\n"
             f"<b>Receipt:</b> <code>{receipt}</code>\n"
             f"<b>Amount:</b> KSh {order.deposit_amount:,.2f}\n"

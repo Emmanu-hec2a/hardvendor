@@ -82,7 +82,7 @@ class MpesaService:
             "PhoneNumber": phone,
             "CallBackURL": settings.MPESA_CALLBACK_URL,
             "AccountReference": order.order_number,
-            "TransactionDesc": f"TinahStore deposit for order {order.order_number}"
+            "TransactionDesc": f"HardVendor Liquor Order {order.order_number}"
         }
         
         headers = {

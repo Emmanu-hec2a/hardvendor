@@ -9,8 +9,33 @@ from datetime import timedelta
 
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 from rest_framework.response import Response
+from .models import SystemSetting
+from .serializers import SystemSettingSerializer
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_system_settings(request):
+    settings = SystemSetting.objects.all()
+    serializer = SystemSettingSerializer(settings, many=True)
+    # Return as a dictionary for easier consumption
+    settings_dict = {s['key']: s['value'] for s in serializer.data}
+    return Response(settings_dict)
+
+@api_view(['POST'])
+@permission_classes([IsAdminUser])
+def update_system_setting(request):
+    key = request.data.get('key')
+    value = request.data.get('value')
+    if not key:
+        return Response({"detail": "Key is required"}, status=400)
+    
+    setting, created = SystemSetting.objects.update_or_create(
+        key=key,
+        defaults={'value': str(value)}
+    )
+    return Response(SystemSettingSerializer(setting).data)
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])

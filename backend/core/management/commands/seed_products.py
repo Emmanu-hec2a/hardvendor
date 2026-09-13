@@ -1,15 +1,57 @@
 from django.core.management.base import BaseCommand
 from products.models import Category, Product, ProductVariant
+from core.models import SystemSetting
 
 class Command(BaseCommand):
-    help = 'Seeds the database with initial products and variants'
+    help = 'Seeds the database with initial liquor products, variants and settings'
 
     def handle(self, *args, **kwargs):
+        # Seed System Settings
+        settings_data = [
+            {
+                'key': 'flash_sale_active', 
+                'value': 'true', 
+                'description': 'Toggles the flash sale banner visibility'
+            },
+            {
+                'key': 'flash_sale_message', 
+                'value': 'Students Only: Free Delivery on all orders above KSh 1,500!', 
+                'description': 'The text displayed in the flash sale banner'
+            },
+            {
+                'key': 'whatsapp_hotline', 
+                'value': '+254726911763', 
+                'description': 'The phone number for WhatsApp re-orders'
+            },
+            {
+                'key': 'delivery_fee_campus', 
+                'value': '50', 
+                'description': 'Flat delivery fee for campus orders'
+            },
+            {
+                'key': 'free_delivery_threshold', 
+                'value': '2500', 
+                'description': 'Minimum amount for free delivery'
+            },
+        ]
+
+        for s_data in settings_data:
+            SystemSetting.objects.get_or_create(
+                key=s_data['key'],
+                defaults={
+                    'value': s_data['value'],
+                    'description': s_data['description']
+                }
+            )
+        self.stdout.write(self.style.SUCCESS('Successfully seeded system settings'))
+
         categories_data = [
-            {'name': 'Totes', 'description': 'Spacious and stylish tote bags'},
-            {'name': 'Crossbody', 'description': 'Convenient crossbody bags'},
-            {'name': 'Backpacks', 'description': 'Functional and trendy backpacks'},
-            {'name': 'Clutches', 'description': 'Elegant clutches for special occasions'},
+            {'name': 'Whiskey', 'description': 'Premium single malts and blended whiskeys'},
+            {'name': 'Gin', 'description': 'London dry and botanical gins'},
+            {'name': 'Vodka', 'description': 'Clean and smooth premium vodkas'},
+            {'name': 'Wine & Champagne', 'description': 'Red, white, and sparkling wines'},
+            {'name': 'Mixers & Chasers', 'description': 'Soft drinks and tonic water'},
+            {'name': 'Party Starter Bundles', 'description': 'Curated liquor bundles for the best campus parties'},
         ]
 
         categories = {}
@@ -21,21 +63,22 @@ class Command(BaseCommand):
             categories[cat_data['name']] = cat
 
         products_data = [
-            {'name': 'Amara Leather Tote', 'category': 'Totes', 'price': 8900, 'original_price': 10500},
-            {'name': 'Naivasha Crossbody', 'category': 'Crossbody', 'price': 5200, 'original_price': None},
-            {'name': 'Zuri Weekender Backpack', 'category': 'Backpacks', 'price': 9600, 'original_price': None},
-            {'name': 'Lamu Raffia Clutch', 'category': 'Clutches', 'price': 2400, 'original_price': None},
-            {'name': 'Kilima Hobo Bag', 'category': 'Totes', 'price': 7300, 'original_price': None},
-            {'name': 'Sable Mini Tote', 'category': 'Totes', 'price': 4800, 'original_price': None},
-            {'name': 'Rusinga Day Backpack', 'category': 'Backpacks', 'price': 8200, 'original_price': None},
-            {'name': 'Tana Structured Satchel', 'category': 'Crossbody', 'price': 6500, 'original_price': None},
+            {'name': 'Johnnie Walker Black Label', 'category': 'Whiskey', 'price': 4500, 'original_price': 5200, 'desc': 'A smooth and smoky blended Scotch whiskey.'},
+            {'name': 'Tanqueray London Dry Gin', 'category': 'Gin', 'price': 3200, 'original_price': None, 'desc': 'A classic, balanced gin with four botanicals.'},
+            {'name': 'Grey Goose Vodka', 'category': 'Vodka', 'price': 5800, 'original_price': 6500, 'desc': 'Premium French vodka made from winter wheat.'},
+            {'name': 'Moët & Chandon Imperial', 'category': 'Wine & Champagne', 'price': 8500, 'original_price': 9800, 'desc': 'Iconic champagne with bright fruitiness.'},
+            {'name': 'Jack Daniel\'s No. 7', 'category': 'Whiskey', 'price': 3800, 'original_price': None, 'desc': 'Classic Tennessee whiskey with sweet notes.'},
+            {'name': 'Hendrick\'s Gin', 'category': 'Gin', 'price': 4900, 'original_price': None, 'desc': 'Infused with cucumber and rose petals.'},
+            {'name': 'Absolut Blue Vodka', 'category': 'Vodka', 'price': 2200, 'original_price': None, 'desc': 'Clean Swedish vodka with a full-bodied character.'},
+            {'name': 'Nederburg Cabernet Sauvignon', 'category': 'Wine & Champagne', 'price': 1800, 'original_price': None, 'desc': 'Rich South African red wine.'},
+            {'name': 'The Pre-Game Bundle', 'category': 'Party Starter Bundles', 'price': 2800, 'original_price': 3500, 'desc': '1x Vodka (750ml) + 2x Mixers + 1x Bag of Ice. Everything you need to start the night.'},
+            {'name': 'Whiskey Night Bundle', 'category': 'Party Starter Bundles', 'price': 5200, 'original_price': 6000, 'desc': '1x JW Black Label + 1x Coke (2L) + Chilled Ice. The ultimate smooth setup.'},
         ]
 
         variants_config = [
-            {'color_name': 'Midnight Black', 'color_hex': '#000000'},
-            {'color_name': 'Caramel Tan', 'color_hex': '#C68E17'},
+            {'label': 'Original', 'color_hex': '#FFFFFF'},
         ]
-        sizes = ['Regular', 'Large']
+        sizes = ['750ml', '1L']
 
         for prod_data in products_data:
             product, created = Product.objects.get_or_create(
@@ -44,8 +87,8 @@ class Command(BaseCommand):
                 defaults={
                     'price': prod_data['price'],
                     'original_price': prod_data['original_price'],
-                    'description': f"High-quality {prod_data['name']} for everyday use.",
-                    'stock': 50,
+                    'description': prod_data['desc'],
+                    'stock': 100,
                     'is_active': True
                 }
             )
@@ -54,10 +97,12 @@ class Command(BaseCommand):
                 for size in sizes:
                     ProductVariant.objects.get_or_create(
                         product=product,
-                        color_name=variant_data['color_name'],
-                        color_hex=variant_data['color_hex'],
+                        color_name=variant_data['label'],
                         size=size,
-                        defaults={'stock': 10}
+                        defaults={
+                            'color_hex': variant_data['color_hex'],
+                            'stock': 20
+                        }
                     )
 
-        self.stdout.write(self.style.SUCCESS('Successfully seeded products and variants'))
+        self.stdout.write(self.style.SUCCESS('Successfully seeded HardVendor spirits and variants'))

@@ -6,8 +6,8 @@ export default function Footer({ compact = false }) {
     return (
       <footer className="site-footer">
         <div className="container footer-bottom" style={{ borderTop: 'none', paddingTop: 0 }}>
-          <span>© 2026 TinahStore. All rights reserved.</span>
-          <div className="contact-line" style={{ margin: 0 }}><Icon name="mail" className="icon icon-sm" /> Need help? hello@tinahstore.co.ke</div>
+          <span>© 2026 HardVendor. All rights reserved.</span>
+          <div className="contact-line" style={{ margin: 0 }}><Icon name="mail" className="icon icon-sm" /> Need help? hello@hardvendor.co.ke</div>
         </div>
       </footer>
     );
@@ -17,8 +17,8 @@ export default function Footer({ compact = false }) {
     <footer className="site-footer" id="footer-contact">
       <div className="container footer-grid">
         <div className="footer-brand">
-          <Link to="/" className="logo">Tinah<span>Store</span></Link>
-          <p>Hand-finished bags designed in Nairobi, built for the everyday. Full-grain leather, honest pricing, easy M-PESA checkout.</p>
+          <Link to="/" className="logo">Hard<span>Vendor</span></Link>
+          <p>Premium liquor delivered to your doorstep within Karatina University Main Campus in under 15 minutes. Original brands, chilled, and ready to pour.</p>
           <div className="footer-social">
             <a href="#" aria-label="Instagram"><Icon name="instagram" /></a>
             <a href="#" aria-label="Facebook"><Icon name="facebook" /></a>
@@ -27,21 +27,21 @@ export default function Footer({ compact = false }) {
         </div>
         <div className="footer-col">
           <h4>Shop</h4>
-          {['Totes', 'Crossbody', 'Backpacks', 'Clutches', 'Sale'].map((item) => <Link to="/shop" key={item}>{item}</Link>)}
+          {['Whiskey', 'Gin', 'Vodka', 'Wine & Champagne', 'Rare Drops'].map((item) => <Link to="/shop" key={item}>{item}</Link>)}
         </div>
         <div className="footer-col">
           <h4>Help</h4>
-          {['Track an order', 'Shipping & returns', 'Size & care guide', 'FAQs'].map((item) => <a href="#" key={item}>{item}</a>)}
+          {['Track an order', 'Shipping & returns', 'Cocktail Recipes', 'FAQs'].map((item) => <a href="#" key={item}>{item}</a>)}
         </div>
         <div className="footer-col">
           <h4>Connect</h4>
-          <div className="contact-line"><Icon name="mapPin" className="icon icon-sm" /> Nairobi, Kenya</div>
+          <div className="contact-line"><Icon name="mapPin" className="icon icon-sm" /> Karatina University Main Campus, Nyeri</div>
           <div className="contact-line"><Icon name="phone" className="icon icon-sm" /> +254 726 911 763</div>
           <div className="contact-line"><Icon name="mail" className="icon icon-sm" /> petniqueke@gmail.com</div>
         </div>
       </div>
       <div className="container footer-bottom">
-        <span>© 2026 TinahStore. All rights reserved.</span>
+        <span>© 2026 HardVendor. All rights reserved.</span>
         <div className="pay-icons">
           <span className="pay-chip">M-PESA</span>
           <span className="pay-chip">AIRTEL</span>

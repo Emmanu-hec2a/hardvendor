@@ -39,7 +39,7 @@ export default function ReviewModal({ order, product, onClose, onReviewed }) {
       <div className="modal-card review-modal">
         <button className="close-btn" onClick={onClose}><Icon name="x" /></button>
         <h3>How was your {product.name}?</h3>
-        <p className="muted">Your feedback helps us improve our workbench craft.</p>
+        <p className="muted">Your feedback helps us improve our service.</p>
 
         <form onSubmit={handleSubmit}>
           <div className="star-rating">
@@ -60,7 +60,7 @@ export default function ReviewModal({ order, product, onClose, onReviewed }) {
           <div className="form-field">
             <label>Add a comment (optional)</label>
             <textarea
-              placeholder="What did you like about the leather, finishing, or fit?"
+              placeholder="What did you like about the drink, delivery, or service?"
               value={comment}
               onChange={(e) => setComment(e.target.value)}
               rows="4"

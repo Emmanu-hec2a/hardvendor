@@ -45,7 +45,7 @@ export default function Wishlist() {
         </nav>
         <div className="page-head">
           <div>
-            <p className="eyebrow">Saved bags</p>
+            <p className="eyebrow">Saved spirits</p>
             <h2 className="h2">Your wishlist</h2>
             <span className="muted" style={{ fontSize: 13.5 }}>
               {wishlist.count} saved item{wishlist.count === 1 ? '' : 's'}
@@ -67,9 +67,9 @@ export default function Wishlist() {
         ) : (
           <div className="shop-empty">
             <Icon name="heart" className="icon icon-lg" />
-            <h3>No saved bags yet</h3>
-            <p className="muted">Tap the heart on a product to keep it here while you decide.</p>
-            <Link to="/shop" className="btn btn-primary btn-sm">Shop bags</Link>
+            <h3>No saved items yet</h3>
+            <p className="muted">Tap the heart on a bottle to keep it here while you decide.</p>
+            <Link to="/shop" className="btn btn-primary btn-sm">Browse spirits</Link>
           </div>
         )}
       </div>

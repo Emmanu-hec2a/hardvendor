@@ -12,18 +12,25 @@ export default function Checkout() {
   const [payment, setPayment] = useState('manual');
   const [isSubmitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
-  const [deliveryArea, setDeliveryArea] = useState('nairobi');
+  const [deliveryArea, setDeliveryArea] = useState('campus');
+  const [hostel, setHostel] = useState('');
   const [transactionCode, setTransactionCode] = useState('');
 
   const wishlist = useContext(WishlistContext);
   const cart = useCart();
   const navigate = useNavigate();
 
+  const hostels = [
+    'SafeStay', 'Sunrise', 'Jilad', '1KM', 'Misisipi', 'Dimples',
+    'Kirima', 'Izzie', 'Honolulu', 'G Town', 'Custle', 'Mwisho Wa Lami',
+    'Off-Campus'
+  ];
+
   useEffect(() => {
-    if (deliveryArea === 'nairobi') {
-      cart.setDeliveryFee(150);
+    if (deliveryArea === 'campus') {
+      cart.setDeliveryFee(50);
     } else {
-      cart.setDeliveryFee(0); // Show as variable/TBD
+      cart.setDeliveryFee(150);
     }
   }, [deliveryArea]);
 
@@ -33,11 +40,13 @@ export default function Checkout() {
     setSubmitting(true);
 
     const formData = new FormData(event.currentTarget);
+    const selectedHostel = hostel === 'other' ? formData.get('otherHostel') : hostel;
+
     const payload = {
       customer_name: formData.get('fullName'),
       customer_email: formData.get('email'),
       customer_phone: formData.get('phone'),
-      delivery_address: formData.get('address'),
+      delivery_address: `${selectedHostel} - ${formData.get('address')}`,
       city: formData.get('city'),
       county: formData.get('county'),
       payment_method: 'mpesa_manual',
@@ -70,9 +79,9 @@ export default function Checkout() {
 
   return (
     <>
-      <header className="checkout-header"><div className="container"><Link to="/" className="logo">Tinah<span>Store</span></Link><div className="secure-pill"><Icon name="lock" className="icon icon-sm" /> Secure checkout</div></div></header>
+      <header className="checkout-header"><div className="container"><Link to="/" className="logo">Hard<span>Vendor</span></Link><div className="secure-pill"><Icon name="lock" className="icon icon-sm" /> Secure checkout</div></div></header>
       <div className="container">
-        <div className="steps"><div className="step done"><span className="num"><Icon name="check" className="icon icon-sm" /></span> Bag</div><div className="step-line"></div><div className="step active"><span className="num">2</span> Checkout</div><div className="step-line"></div><div className="step"><span className="num">3</span> Confirmation</div></div>
+        <div className="steps"><div className="step done"><span className="num"><Icon name="check" className="icon icon-sm" /></span> Order</div><div className="step-line"></div><div className="step active"><span className="num">2</span> Checkout</div><div className="step-line"></div><div className="step"><span className="num">3</span> Confirmation</div></div>
 
         {error && (
           <div className="alert alert-error" style={{ marginTop: 20, padding: '12px 16px', backgroundColor: '#fee2e2', color: '#b91c1c', borderRadius: 8, fontSize: 14 }}>
@@ -88,7 +97,26 @@ export default function Checkout() {
                 <Field className="full" label="Full name" name="fullName" placeholder="Amani Njoroge" required />
                 <Field label="Phone number" name="phone" placeholder="0712345678" type="tel" required />
                 <Field label="Email" name="email" placeholder="amani@email.com" type="email" required />
-                <Field className="full" label="Delivery address" name="address" placeholder="Street, building, apartment" required />
+                <div className="form-field full">
+                  <label>Hostel/Residence*</label>
+                  <select
+                    name="hostel"
+                    value={hostel}
+                    onChange={(e) => setHostel(e.target.value)}
+                    required
+                  >
+                    <option value="">Select your hostel</option>
+                    {hostels.map(h => <option key={h} value={h}>{h}</option>)}
+                    <option value="other">Other (specify below)</option>
+                  </select>
+                </div>
+
+                {hostel === 'other' && (
+                  <Field className="full" label="Specify Residence" name="otherHostel" placeholder="Name of your place" required />
+                )}
+
+                <Field className="full" label="Room / House Details" name="address" placeholder="Room 402, Building A, etc." required />
+
                 <div className="form-field">
                   <label>Delivery Area</label>
                   <select
@@ -97,19 +125,18 @@ export default function Checkout() {
                     onChange={(e) => setDeliveryArea(e.target.value)}
                     required
                   >
-                    <option value="nairobi">Nairobi, Juja, Thika, Thika Rd (KES 150)</option>
-                    <option value="other">Outside these areas (Fee varies)</option>
+                    <option value="campus">Karatina Uni Main Campus (KES 50)</option>
+                    <option value="outside">Outside Campus (KES 150)</option>
                   </select>
                 </div>
-                <Field label="City / Town" name="city" placeholder="Nairobi" required />
+                <Field label="City / Town" name="city" placeholder="Karatina" required />
                 <div className="form-field">
                   <label>County</label>
                   <select name="county" required>
+                    <option value="Nyeri">Nyeri</option>
                     <option value="Nairobi">Nairobi</option>
-                    <option value="Mombasa">Mombasa</option>
-                    <option value="Kisumu">Kisumu</option>
-                    <option value="Nakuru">Nakuru</option>
-                    <option value="Kiambu">Kiambu</option>
+                    <option value="Laikipia">Laikipia</option>
+                    <option value="Kirinyaga">Kirinyaga</option>
                     <option value="Other">Other</option>
                   </select>
                 </div>
@@ -123,7 +150,7 @@ export default function Checkout() {
                     <p><b>Instructions:</b></p>
                     <p style={{ marginTop: 6 }}>1. Send the 60% deposit (<b>{formatKes(cart.total * 0.6)}</b>) to the number below:</p>
                     <div style={{ marginTop: 10, padding: '10px', background: 'var(--surface)', borderRadius: 6, border: '1px solid var(--hairline)' }}>
-                      <p><b>M-PESA:</b> 0726911763 (CHRISTINE)</p>
+                      <p><b>M-PESA:</b> 0717272726 (CHRISTINE)</p>
                       <p><b>Airtel Money:</b> 0750243752 (CHRISTINE)</p>
                     </div>
                     <p style={{ marginTop: 12 }}>2. Enter your <b>Transaction Code</b> below (e.g., RJL1234567):</p>

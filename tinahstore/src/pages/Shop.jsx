@@ -83,8 +83,8 @@ export default function Shop() {
   return (
     <>
       <SEO
-        title="Shop All Bags"
-        description="Browse our collection of hand-finished leather and canvas bags. From structured totes to city-ready crossbody bags, find your perfect everyday carry."
+        title="Shop All Spirits"
+        description="Browse our collection of premium liquor. From fine whiskey to smooth vodka and chilled wines, delivered to your doorstep in 15 minutes."
         url="/shop"
       />
       <div className="container">
@@ -94,7 +94,7 @@ export default function Shop() {
         <div className="page-head shop-head">
           <div>
             <p className="eyebrow">Collection</p>
-            <h2 className="h2">Shop all bags</h2>
+            <h2 className="h2">Shop all spirits</h2>
             <span className="muted" style={{ fontSize: 13.5 }}>{products.length} products</span>
           </div>
           <button className="mobile-filter-btn" type="button" onClick={() => setFiltersOpen((open) => !open)} aria-expanded={filtersOpen}>
@@ -112,7 +112,7 @@ export default function Shop() {
                 type="search"
                 value={filters.query}
                 onChange={(event) => updateFilters({ query: event.target.value })}
-                placeholder="Search bags"
+                placeholder="Search spirits"
               />
             </div>
 
@@ -196,12 +196,12 @@ export default function Shop() {
               </div>
             </div>
 
-            {isLoading && <div className="shop-empty"><h3>Loading bags...</h3></div>}
-            {error && <div className="shop-empty"><h3>We could not load the shop.</h3><p className="muted">Please try refreshing the page.</p></div>}
+            {isLoading && <div className="shop-empty"><h3>Loading spirits...</h3></div>}
+            {error && <div className="shop-empty"><h3>We could not load the bar.</h3><p className="muted">Please try refreshing the page.</p></div>}
             {!isLoading && !error && visibleProducts.length === 0 && (
               <div className="shop-empty">
                 <Icon name="search" className="icon icon-lg" />
-                <h3>No bags match those filters</h3>
+                <h3>No spirits match those filters</h3>
                 <p className="muted">Try widening the price range or clearing one of the selected filters.</p>
                 <button className="btn btn-outline btn-sm" type="button" onClick={clearFilters}>Clear filters</button>
               </div>

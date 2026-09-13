@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import Icon from '../icons/Icon.jsx';
 import ThemeToggle from '../ui/ThemeToggle.jsx';
 import AnnounceBar from './AnnounceBar.jsx';
+import FlashSaleBanner from '../ui/FlashSaleBanner.jsx';
 import { useCart } from '../../hooks/useCart.js';
 import { WishlistContext } from '../../context/WishlistContext.jsx';
 import { useAuth } from '../../context/AuthContext.jsx';
@@ -46,9 +47,10 @@ export default function Header() {
   return (
     <header className={`site-header ${scrolled ? 'scrolled' : ''}`}>
       <AnnounceBar />
+      <FlashSaleBanner />
       <div className="nav-row-bg">
         <div className="container nav-row">
-          <Link to="/" className="logo">Tinah<span>Store</span></Link>
+          <Link to="/" className="logo">Hard<span>Vendor</span></Link>
           <nav className="main-nav">
             <NavLink to="/">Home</NavLink>
             <NavLink to="/shop">Shop</NavLink>
@@ -97,7 +99,7 @@ export default function Header() {
             type="search"
             value={searchQuery}
             onChange={(event) => setSearchQuery(event.target.value)}
-            placeholder="Search totes, crossbody, backpacks..."
+            placeholder="Search whiskey, gin, vodka..."
           />
           <button className="btn btn-primary btn-sm" type="submit">Search</button>
           <button className="icon-btn" aria-label="Close search" onClick={() => setSearchOpen(false)}><Icon name="x" /></button>

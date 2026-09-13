@@ -5,7 +5,7 @@ const ThemeContext = createContext();
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
     // Check local storage or system preference
-    const saved = localStorage.getItem('tinahstore-theme');
+    const saved = localStorage.getItem('hardvendor-theme');
     if (saved) return saved;
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   });
@@ -13,7 +13,7 @@ export function ThemeProvider({ children }) {
   useEffect(() => {
     // Update data-theme attribute on html element
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('tinahstore-theme', theme);
+    localStorage.setItem('hardvendor-theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {

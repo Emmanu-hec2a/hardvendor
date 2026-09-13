@@ -12,6 +12,7 @@ import ColorSwatchPicker from '../components/product/ColorSwatchPicker.jsx';
 import SizePicker from '../components/product/SizePicker.jsx';
 import { WishlistContext } from '../context/WishlistContext.jsx';
 import { useCart } from '../hooks/useCart.js';
+import { useSettings } from '../hooks/useSettings.js';
 import { useToast } from '../context/ToastContext.jsx';
 import { formatKes } from '../data/products.js';
 import { api } from '../services/api.js';
@@ -28,7 +29,10 @@ export default function ProductDetail() {
 
   const wishlist = useContext(WishlistContext);
   const cart = useCart();
+  const { getSetting } = useSettings();
   const { showToast } = useToast();
+
+  const whatsappNumber = getSetting('whatsapp_hotline', '254717272726').replace('+', '').replace(/\s/g, '');
 
   useEffect(() => {
     async function fetchDetails() {
@@ -57,7 +61,7 @@ export default function ProductDetail() {
   }, [slug]);
 
   if (isLoading) {
-    return <div className="container" style={{ padding: '100px 0', textAlign: 'center' }}><h3>Loading bag details...</h3></div>;
+    return <div className="container" style={{ padding: '100px 0', textAlign: 'center' }}><h3>Loading spirit details...</h3></div>;
   }
 
   if (!product) {
@@ -72,16 +76,16 @@ export default function ProductDetail() {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": product.name,
-    "image": product.primary_image || "https://tinahstore.store/og-image.png",
+    "image": product.primary_image || "https://hardvendor.store/og-image.png",
     "description": product.description,
     "sku": product.id.toString(),
     "brand": {
       "@type": "Brand",
-      "name": "TinahStore"
+      "name": "HardVendor"
     },
     "offers": {
       "@type": "Offer",
-      "url": `https://tinahstore.store/product/${slug}`,
+      "url": `https://hardvendor.store/product/${slug}`,
       "priceCurrency": "KES",
       "price": product.price,
       "availability": product.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
@@ -102,19 +106,19 @@ export default function ProductDetail() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://tinahstore.store/"
+        "item": "https://hardvendor.store/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Shop",
-        "item": "https://tinahstore.store/shop"
+        "item": "https://hardvendor.store/shop"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": product.name,
-        "item": `https://tinahstore.store/product/${slug}`
+        "item": `https://hardvendor.store/product/${slug}`
       }
     ]
   };
@@ -187,6 +191,15 @@ export default function ProductDetail() {
               >
                 <Icon name="bag" className="icon icon-sm" /> Add to cart
               </button>
+              <a
+                href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Hi HardVendor, I'd like to order ${product.name} (${size}${color ? `, ${color.name}` : ''}).`)}`}
+                target="_blank"
+                rel="noreferrer"
+                className="btn btn-outline"
+                style={{ flex: 1, gap: 8 }}
+              >
+                <Icon name="whatsapp" className="icon icon-sm" /> Order via WhatsApp
+              </a>
               <button
                 className={`icon-btn ${wishlist.ids.includes(product.id) ? 'active' : ''}`}
                 aria-label="Add to wishlist"
@@ -194,7 +207,6 @@ export default function ProductDetail() {
               >
                 <Icon name="heart" />
               </button>
-              <button className="icon-btn" aria-label="Share"><Icon name="share" /></button>
             </div>
 
             <div className="stock-note">
@@ -203,14 +215,14 @@ export default function ProductDetail() {
             </div>
 
             <div className="pd-trust">
-              <div className="trust-item"><Icon name="shield" /><span style={{ fontSize: 12.5 }}>M-PESA Secure</span></div>
-              <div className="trust-item"><Icon name="refresh" /><span style={{ fontSize: 12.5 }}>7-day exchange</span></div>
-              <div className="trust-item"><Icon name="leaf" /><span style={{ fontSize: 12.5 }}>Nairobi Crafted</span></div>
+              <div className="trust-item"><Icon name="shield" /><span style={{ fontSize: 12.5 }}>Original Brand</span></div>
+              <div className="trust-item"><Icon name="clock" /><span style={{ fontSize: 12.5 }}>15-min delivery</span></div>
+              <div className="trust-item"><Icon name="ice" /><span style={{ fontSize: 12.5 }}>Chilled on arrival</span></div>
             </div>
 
             <Accordion items={[
-              { title: 'Material & care', content: product.material_care || 'Full-grain leather, cotton canvas lining. Wipe clean with a dry or slightly damp cloth. Avoid prolonged direct sun. Store with the dust bag provided when not in use.' },
-              { title: 'Shipping & returns', content: 'Nairobi: 24-48 hrs by rider. Upcountry: 3-5 working days. 7-day exchange window; items must be unused with tags attached.' },
+              { title: 'Tasting Notes & Serving', content: product.material_care || 'Best served chilled or over ice. Experience the smooth notes and refined finish of this premium spirit. Drink responsibly.' },
+              { title: 'Delivery & Returns', content: 'Delivered in under 15 minutes across Karatina University Main Campus. Original brand guarantee. Please check bottle seal upon delivery.' },
             ]} />
           </div>
         </div>

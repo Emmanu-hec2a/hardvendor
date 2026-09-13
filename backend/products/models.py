@@ -63,13 +63,16 @@ class ProductImage(models.Model):
 
 class ProductVariant(models.Model):
     SIZE_CHOICES = (
-        ('Regular', 'Regular'),
-        ('Large', 'Large'),
+        ('250ml', '250ml'),
+        ('350ml', '350ml'),
+        ('750ml', '750ml'),
+        ('1L', '1L'),
+        ('Can/Bottle', 'Can/Bottle'),
     )
     product = models.ForeignKey(Product, related_name='variants', on_delete=models.CASCADE)
-    color_name = models.CharField(max_length=50)
-    color_hex = models.CharField(max_length=7)
-    size = models.CharField(max_length=20, choices=SIZE_CHOICES, default='Regular')
+    color_name = models.CharField(max_length=50, verbose_name="Edition/Type")
+    color_hex = models.CharField(max_length=7, blank=True, null=True)
+    size = models.CharField(max_length=20, choices=SIZE_CHOICES, default='750ml')
     stock = models.PositiveIntegerField(default=0)
 
     def __str__(self):

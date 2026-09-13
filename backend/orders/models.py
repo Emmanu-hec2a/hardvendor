@@ -46,7 +46,7 @@ class Order(models.Model):
     def generate_order_number(self):
         while True:
             digits = ''.join(random.choices(string.digits, k=5))
-            order_number = f"TS-{digits}"
+            order_number = f"HV-{digits}"
             if not Order.objects.filter(order_number=order_number).exists():
                 return order_number
 

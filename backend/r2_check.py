@@ -1,5 +1,5 @@
 import django, os
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tinahstore.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'hardvendor.settings')
 django.setup()
 from django.conf import settings
 print('STORAGE:', settings.DEFAULT_FILE_STORAGE)
@@ -10,7 +10,7 @@ print('KEY:', settings.AWS_ACCESS_KEY_ID[:6], '...')
 
 print()
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tinahstore.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'hardvendor.settings')
 django.setup()
 
 import boto3
@@ -27,7 +27,7 @@ s3 = boto3.client(
 print()
 
 # import django, os
-# os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tinahstore.settings')
+# os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'hardvendor.settings')
 # django.setup()
 # from products.models import Product
 # for p in Product.objects.all():
