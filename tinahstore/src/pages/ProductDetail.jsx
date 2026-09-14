@@ -189,7 +189,7 @@ export default function ProductDetail() {
                   showToast(`${product.name} added to cart!`);
                 }}
               >
-                <Icon name="bag" className="icon icon-sm" /> Add to cart
+                <Icon name="bottle" className="icon icon-sm" /> Add to cart
               </button>
               <a
                 href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Hi HardVendor, I'd like to order ${product.name} (${size}${color ? `, ${color.name}` : ''}).`)}`}

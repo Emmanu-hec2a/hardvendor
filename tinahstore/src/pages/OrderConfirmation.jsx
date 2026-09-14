@@ -7,7 +7,7 @@ import { formatKes } from '../data/products.js';
 import { api } from '../services/api.js';
 
 const supportEmail = 'orders@hardvendor.co.ke';
-const supportPhone = '254717272726';
+const supportPhone = '254726911763';
 
 export default function OrderConfirmation() {
   const location = useLocation();
@@ -127,7 +127,7 @@ export default function OrderConfirmation() {
 
             {paymentStatus === 'paid' ? (
               <div className="confirm-actions">
-                <Link to="/shop" className="btn btn-primary"><Icon name="bag" className="icon icon-sm" /> Continue shopping</Link>
+                <Link to="/shop" className="btn btn-primary"><Icon name="bottle" className="icon icon-sm" /> Continue shopping</Link>
                 <button className="btn btn-outline" type="button" onClick={() => window.print()}><Icon name="printer" className="icon icon-sm" /> Print receipt</button>
               </div>
             ) : (

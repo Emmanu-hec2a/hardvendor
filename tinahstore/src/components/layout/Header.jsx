@@ -64,7 +64,7 @@ export default function Header() {
               {user ? <span className="text-xs font-bold bg-teal-pale text-teal-ink w-6 h-6 rounded-full flex items-center justify-center">{(user.username || user.email).charAt(0).toUpperCase()}</span> : <Icon name="user" />}
             </Link>
             <Link to="/wishlist" className="icon-btn" aria-label="Wishlist"><Icon name="heart" />{wishlist.count > 0 && <span className="badge">{wishlist.count}</span>}</Link>
-            <Link to="/cart" className="icon-btn" aria-label="Cart"><Icon name="bag" /><span className="badge">{cart.count}</span></Link>
+            <Link to="/cart" className="icon-btn" aria-label="Cart"><Icon name="bottle" /><span className="badge">{cart.count}</span></Link>
             <button
               className={`icon-btn nav-toggle ${navOpen ? 'active' : ''}`}
               aria-label="Menu"

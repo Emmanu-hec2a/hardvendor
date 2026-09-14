@@ -46,7 +46,7 @@ export default function ProductCard({ product, quickAdd = false, className = '' 
                 showToast(`${product.name} added to cart!`);
               }}
             >
-              Quick add <Icon name="bag" className="icon icon-sm" />
+              Quick add <Icon name="plus" className="icon icon-sm" />
             </button>
           </div>
         )}

@@ -18,7 +18,7 @@ export default function Cart() {
         <div className="cart-layout">
           <div>
             {cart.items.length === 0 && (
-              <div className="cart-empty"><Icon name="bag" /><h3>Your order is empty</h3><Link to="/shop" className="btn btn-primary" style={{ marginTop: 18 }}>Start shopping</Link></div>
+              <div className="cart-empty"><Icon name="bottle" /><h3>Your order is empty</h3><Link to="/shop" className="btn btn-primary" style={{ marginTop: 18 }}>Start shopping</Link></div>
             )}
             {cart.items.map((item) => (
               <div className="cart-row" key={`${item.productId}-${item.color}-${item.size}`}>

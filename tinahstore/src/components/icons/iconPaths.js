@@ -2,7 +2,7 @@ export const iconPaths = {
   search: '<circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line>',
   user: '<circle cx="12" cy="8" r="4"></circle><path d="M4.5 20c0-4.2 3.4-6.5 7.5-6.5s7.5 2.3 7.5 6.5"></path>',
   heart: '<path d="M12 20.5c-4.2-2.8-8.5-6-8.5-10.3a4.7 4.7 0 0 1 8.5-2.7 4.7 4.7 0 0 1 8.5 2.7c0 4.3-4.3 7.5-8.5 10.3z"></path>',
-  bag: '<path d="M6.5 8.5h11l-1 12.5h-9l-1-12.5z"></path><path d="M9 8.5V6.8a3 3 0 0 1 6 0v1.7"></path>',
+  bag: '<path d="M9 20h6V10l-1-2V4a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v4l-1 2z"></path><line x1="9" y1="13" x2="15" y2="13"></line>',
   menu: '<line x1="4" y1="7" x2="20" y2="7"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="17" x2="20" y2="17"></line>',
   x: '<line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line>',
   chevronDown: '<polyline points="6,9 12,15.5 18,9"></polyline>',
