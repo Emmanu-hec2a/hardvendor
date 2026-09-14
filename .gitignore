@@ -1,6 +1,9 @@
+/admin-panel/.env.example
 /admin-panel/.env
 /admin-panel/node_modules
 
+/backend/.env.example
 /backend/.env
 /hardvendor/node_modules
 /hardvendor/.env
+/hardvendor/.env.example
