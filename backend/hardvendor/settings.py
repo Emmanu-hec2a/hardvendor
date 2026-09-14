@@ -20,7 +20,7 @@ DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = env.list(
     'ALLOWED_HOSTS',
-    default=['localhost', '127.0.0.1']
+    default=['localhost', '127.0.0.1', 'api.hardvendor.store', 'hardvendor.store']
 )
 
 # settings.py
@@ -28,6 +28,7 @@ ALLOWED_HOSTS = env.list(
 CSRF_TRUSTED_ORIGINS = [
     "https://api.hardvendor.store",
     "https://hardvendor.store",  # Good practice to include your frontend too
+    "https://admin.hardvendor.store",
 ]
 
 

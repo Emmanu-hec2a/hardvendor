@@ -15,7 +15,7 @@ class EmailAuthToken(ObtainAuthToken):
         user = authenticate(request, username=email, password=password)
         
         if not user:
-            return Response({'error': 'Invalid credentials'}, status=400)
+            return Response({'error': 'Invalid credentials'}, status=401)
             
         token, created = Token.objects.get_or_create(user=user)
         return Response({
