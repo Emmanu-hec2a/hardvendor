@@ -4,14 +4,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from core.views_admin import admin_dashboard_stats, get_me, change_password, get_system_settings, update_system_setting
 from core.views_auth import GoogleLogin
-from rest_framework.authtoken.views import obtain_auth_token
+from core.auth import EmailAuthToken
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('api/v1/settings/', get_system_settings, name='get_settings'),
     path('api/v1/admin/settings/update/', update_system_setting, name='update_setting'),
-    path('api/v1/auth/token/', obtain_auth_token, name='api_token_auth'),
+    path('api/v1/auth/token/', EmailAuthToken.as_view(), name='api_token_auth'),
     path('api/v1/auth/me/', get_me, name='auth_me'),
     path('api/v1/auth/change-password/', change_password, name='change_password'),
     path('api/v1/auth/google/', GoogleLogin.as_view(), name='google_login'),

@@ -20,7 +20,9 @@ const Login = () => {
 
     try {
       const data = await authService.login(username, password);
-      localStorage.setItem('ts_admin_token', data.token);
+      // dj-rest-auth returns 'key', obtain_auth_token returns 'token'
+      const token = data.key || data.token;
+      localStorage.setItem('ts_admin_token', token);
       setUser({ username });
       toast.success('Welcome back!');
 
