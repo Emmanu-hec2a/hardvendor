@@ -20,7 +20,7 @@ class Command(BaseCommand):
             },
             {
                 'key': 'whatsapp_hotline', 
-                'value': '+254726911763', 
+                'value': '+254717272726', 
                 'description': 'The phone number for WhatsApp re-orders'
             },
             {

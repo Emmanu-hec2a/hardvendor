@@ -16,7 +16,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # ── Core ──────────────────────────────────────────────────────────────────────
 
 SECRET_KEY = env('SECRET_KEY')
-DEBUG       = env('DEBUG')
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = env.list(
     'ALLOWED_HOSTS',
@@ -238,11 +238,11 @@ FREE_DELIVERY_THRESHOLD = env('FREE_DELIVERY_THRESHOLD')
 
 # ── M-PESA Daraja ─────────────────────────────────────────────────────────────
 
-MPESA_CONSUMER_KEY    = env('MPESA_CONSUMER_KEY')
-MPESA_CONSUMER_SECRET = env('MPESA_CONSUMER_SECRET')
-MPESA_SHORTCODE       = env('MPESA_SHORTCODE')
-MPESA_PASSKEY         = env('MPESA_PASSKEY')
-MPESA_CALLBACK_URL    = env('MPESA_CALLBACK_URL')
+MPESA_CONSUMER_KEY    = env('MPESA_CONSUMER_KEY', '')
+MPESA_CONSUMER_SECRET = env('MPESA_CONSUMER_SECRET', '')
+MPESA_SHORTCODE       = env('MPESA_SHORTCODE', '')
+MPESA_PASSKEY         = env('MPESA_PASSKEY', '')
+MPESA_CALLBACK_URL    = env('MPESA_CALLBACK_URL', '')
 MPESA_ENV             = env('MPESA_ENV', default='sandbox')
 
 # ── Telegram alerts ───────────────────────────────────────────────────────────
