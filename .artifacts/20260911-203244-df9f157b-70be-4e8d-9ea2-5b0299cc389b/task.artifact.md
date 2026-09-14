@@ -6,3 +6,6 @@
     - [x] Change `EmailAuthToken` error code to 401
     - [x] Update `authService.login` to use `/auth/token/`
 - [x] Verify fixes
+- [x] Fix 500 Error on /settings/ Endpoint
+    - [x] Update `get_system_settings` view in `views_admin.py`
+    - [x] Verify fix

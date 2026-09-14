@@ -17,11 +17,15 @@ from .serializers import SystemSettingSerializer
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def get_system_settings(request):
-    settings = SystemSetting.objects.all()
-    serializer = SystemSettingSerializer(settings, many=True)
-    # Return as a dictionary for easier consumption
-    settings_dict = {s['key']: s['value'] for s in serializer.data}
-    return Response(settings_dict)
+    try:
+        settings = SystemSetting.objects.all()
+        serializer = SystemSettingSerializer(settings, many=True)
+        # Return as a dictionary for easier consumption
+        settings_dict = {s['key']: s['value'] for s in serializer.data if 'key' in s}
+        return Response(settings_dict)
+    except Exception:
+        # Return empty object to prevent frontend crash if table is missing/empty
+        return Response({})
 
 @api_view(['POST'])
 @permission_classes([IsAdminUser])
