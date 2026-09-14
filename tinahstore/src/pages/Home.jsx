@@ -50,7 +50,7 @@ export default function Home() {
     "@type": "Organization",
     "name": "HardVendor",
     "url": "https://hardvendor.store",
-    "logo": "https://hardvendor.store/favicon.png",
+    "logo": "https://hardvendor.store/favicon1.png",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+254-726-911-763",
